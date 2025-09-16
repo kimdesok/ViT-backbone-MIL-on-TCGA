@@ -44,13 +44,18 @@ Panel B: only 2 patches of tissue cells.
 
 <img width="546" height="470" alt="image" src="https://github.com/user-attachments/assets/f0dd4956-558f-4520-9522-0c14202d6757" />
 
-This illustrates the challenge of accurate WSI-level classification using MIL models.
+This illustrates the challenge of accurate WSI-level classification using MIL models.  
+
+Patch-level classification experiments (see Fig. 4) demonstrated visually distinct differences between metastatic and normal tissue patches, even for non-experts. However, imbalance in the number of cancer vs. normal patches introduces class imbalance issues.
+
+<img width="423" height="253" alt="image" src="https://github.com/user-attachments/assets/17943aac-a451-459d-af56-bfbad25cd12f" />
+
+
+To address this, some researchers turn to semantic segmentation methods, though requiring pixel-level annotations, that avoid class imbalance and have been reported to achieve relatively high accuracy (AUC ~95%) [reference here].
 
 ## Performance evaluation on TCGA-BRCA test set
 
-CNN-MIL models generally achieve >90% AUC,
-
-ViT-MIL achieves >95% AUC (see Table 1).
+CNN-MIL models generally achieve >90% AUC, whereas ViT-MIL achieves >95% AUC (see Table 1).
 
 📊 Table 1. Comparison of CNN-backbone MIL vs. ViT-backbone MIL models on TCGA-BRCA
 
@@ -58,15 +63,12 @@ ViT-MIL achieves >95% AUC (see Table 1).
 
 >* CNN-only models (without MIL) could not be trained due to OOM (Out-Of-Memory) errors on GPUs with 160GB memory (A100 x 2 provided by Elicer group, Seoul, s. Korea).
 
-Inference Service Development(Under Construction)
+## Inference Service Development(Under Construction)
 
 Since training datasets consist of Whole Slide Images (WSIs, up to ~10GB per file), memory and storage constraints are anticipated for ATOM NPU–based services. Fortunately, ViT-MIL and CNN-MIL models require significantly smaller memory footprints, making deployment feasible.
 
-Patch-level classification experiments (see Fig. 4) demonstrated visually distinct differences between metastatic and normal tissue patches, even for non-experts. However, imbalance in the number of cancer vs. normal patches introduces class imbalance issues.
 
-<img width="423" height="253" alt="image" src="https://github.com/user-attachments/assets/17943aac-a451-459d-af56-bfbad25cd12f" />
 
-Semantic segmentation methods, though requiring pixel-level annotations, avoid class imbalance and have been reported to achieve relatively high accuracy (AUC ~95%).
 
 ## Key Achievements
 
