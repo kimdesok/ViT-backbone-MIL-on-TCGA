@@ -1,17 +1,15 @@
 # Training a ViT backbone MIL on TCGA-BRCA and EDA on Camelyon 16 Datasets
 
 >* A ViT backbone MIL model has been trained on TCGA-BRCA dataset and its performance was compared to the End to End model backbone CNN models' performance.
+>* Camelyon 16 datasets were prepared as TFRecord format dataset and a brief EDA was performed.
+>* The developed MIL models will be applied to the Camelyon 16/17 datasets.
 
 Aims:
 
 1) Acquisition and preprocessing of histopathology image datasets,
-
 2) Exploratory Data Analysis (EDA), and
-
 3) Training experiments with Multiple Instance Learning (MIL) models based on transformer backbones such as ViT.
-
 4) Design of inference services for cancer diagnosis assistance based on pathology image analysis.
-
 5) Development and operation of an NPU-based prototype production platform for preliminary research.
 
 Tasks: Dataset construction, model training experiments, inference service design, Streamlit-based demo coding, and REST API framework-based prototype development for cancer diagnosis inference services.
