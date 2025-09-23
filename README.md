@@ -24,7 +24,7 @@ Tasks: Dataset construction, model training experiments, inference service desig
 
 * All MIL models have been trained on TCGA-BRCA; Camelyon16 dataset analysis is ongoing, and PatchCamelyon will be used for further training.
 
-## EDA on TCGA-BRCA Dataset
+## A brief EDA and experimenting with tissue segmentation on TCGA-BRCA Dataset
 <img width="536" height="280" alt="image" src="https://github.com/user-attachments/assets/ed9323a6-0ccd-4d3b-aeab-72b6d4bb5f80" />
 Exploratory Data Analysis (EDA) and Visualization
 
@@ -35,23 +35,22 @@ Experiments were conducted on preprocessing and filtering slides to exclude empt
 <img width="321" height="412" alt="image" src="https://github.com/user-attachments/assets/56aad0e5-f049-463e-9659-c9814fbfba50" />
 
 
-SVS-format WSI files were converted to TFRecord format.
+SVS-format WSI files were converted to TFRecord format, that resulted in a 10 to 1 reduction of the original size of the dataset.
 
 Localization of metastatic cancer cells in lymph node tissue was visualized (see Fig. 3). For example:
 
-Panel A: metastatic tissue requires 1,077 patches of 224×224 size,
-Panel B: only 2 patches of tissue cells.
+Panel A shows a large piece of metastatic tissue, consisting of 1,077 patches of 224×224 size.
+Panel B shows only two patches of tissue cells representing a micrometastasis, presumably out of approx. 2K tissue patches (0.1%).
 
 <img width="546" height="470" alt="image" src="https://github.com/user-attachments/assets/f0dd4956-558f-4520-9522-0c14202d6757" />
 
-This illustrates the challenge of accurate WSI-level classification using MIL models.  
+This illustrates the challenge of accurate WSI-level classification using MIL models not to mention the difficulty of a visual task of detecting the micro-infiltration.  
 
 Patch-level classification experiments (see Fig. 4) demonstrated visually distinct differences between metastatic and normal tissue patches, even for non-experts. However, imbalance in the number of cancer vs. normal patches introduces class imbalance issues.
 
 <img width="423" height="253" alt="image" src="https://github.com/user-attachments/assets/17943aac-a451-459d-af56-bfbad25cd12f" />
 
-
-To address this, some researchers turn to semantic segmentation methods, though requiring pixel-level annotations, that avoid class imbalance and have been reported to achieve relatively high accuracy (AUC ~95%) [reference here].
+To address this, some researchers turned to semantic segmentation methods in conjunction with U-Net and Mask RCNN, though requiring pixel-level annotations, that avoid class imbalance and have been reported to achieve relatively high accuracy (AUC>97%) [1][2].
 
 ## Performance evaluation on TCGA-BRCA test set
 
@@ -67,10 +66,11 @@ CNN-MIL models generally achieve >90% AUC, whereas ViT-MIL achieves >95% AUC (se
 
 Since training datasets consist of Whole Slide Images (WSIs, up to ~10GB per file), memory and storage constraints are anticipated for ATOM NPU–based services. Fortunately, ViT-MIL and CNN-MIL models require significantly smaller memory footprints, making deployment feasible.
 
-
-
-
 ## Key Achievements
 
 1) Developed a ViT-backbone MIL model robust to WSI-level weak labeling, avoiding OOM errors on low-memory GPUs.
 2) Achieved 2–3% higher AUC compared to CNN-MIL baselines (90–95%).
+
+## References
+[1] S. Wu et al, An artificial intelligence model for detecting pathological lymph node metastasis in prostate cancer using whole slide images: a retrospective, multicentre, diagnostic study, eClinicalMedicine, 71:102580, Apr 5 2024 
+[2] J. Li et al, Improving the speed and quality of cancer segmentation using lower resolution pathology images,  83:11999–12015, June 29 2023
