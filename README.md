@@ -72,5 +72,5 @@ Since training datasets consist of Whole Slide Images (WSIs, up to ~10GB per fil
 2) Achieved 2–3% higher AUC compared to CNN-MIL baselines (90–95%).
 
 ## References
-[1] S. Wu et al, An artificial intelligence model for detecting pathological lymph node metastasis in prostate cancer using whole slide images: a retrospective, multicentre, diagnostic study, eClinicalMedicine, 71:102580, Apr 5 2024 
+[1] S. Wu et al, An artificial intelligence model for detecting pathological lymph node metastasis in prostate cancer using whole slide images: a retrospective, multicentre, diagnostic study, eClinicalMedicine, 71:102580, Apr 5 2024 <br>
 [2] J. Li et al, Improving the speed and quality of cancer segmentation using lower resolution pathology images,  83:11999–12015, June 29 2023
