@@ -1,4 +1,4 @@
-# Training a ViT backbone MIL on TCGA-BRCA Dataset
+# Training a ViT backbone MIL on TCGA-BRCA and EDA on Camelyon 16 Datasets
 
 >* A ViT backbone MIL model has been trained on TCGA-BRCA dataset and its performance was compared to the End to End model backbone CNN models' performance.
 
